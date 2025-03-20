@@ -8,6 +8,6 @@ import java.util.List;
 
 @Mapper
 public interface TestMapper {
-    @Select("SELECT id, TestMessage FROM Tests")
+    @Select("SELECT id, message, sub_message FROM test")
     List<TestModel> findAll();
 }

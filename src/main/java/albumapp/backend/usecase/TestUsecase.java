@@ -2,9 +2,11 @@ package albumapp.backend.usecase;
 
 import albumapp.backend.domain.model.TestModel;
 import albumapp.backend.service.TestService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class TestUsecase {
     private final TestService testService;
 

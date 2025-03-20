@@ -7,5 +7,6 @@ import lombok.Setter;
 @Setter
 public class TestModel {
     private String id;
-    private String testMessage;
+    private String message;
+    private String subMessage;
 }
