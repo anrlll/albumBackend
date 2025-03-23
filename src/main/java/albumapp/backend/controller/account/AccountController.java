@@ -18,7 +18,6 @@ public class AccountController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@RequestBody SignUpDto dto) {
-        //TODO userDtoを作ってDtoに引数を置き換える、Modelを使用するのはService層のみにしたい
         var res = accountUsecase.registerUser(dto);
         return ResponseEntity.created(res).build();
     }
