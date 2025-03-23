@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/account")
 public class AccountController {
+    //TODO created_atとか色々足りてないカラムがあるから、SQLに記載しなくてもそれらのカラムは作成されるように設定する Flywayにある気がする
     private final AccountUsecase accountUsecase;
 
     public AccountController(AccountUsecase accountUsecase) {
