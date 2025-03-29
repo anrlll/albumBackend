@@ -3,6 +3,7 @@ package albumapp.backend.service.account;
 import albumapp.backend.controller.account.dto.SignUpDto;
 import albumapp.backend.domain.model.account.AccountModel;
 import albumapp.backend.domain.repository.account.AccountRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.net.URI;
@@ -10,9 +11,11 @@ import java.net.URI;
 @Service
 public class AccountService {
     private final AccountRepository accountRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public AccountService(AccountRepository accountRepository) {
+    public AccountService(AccountRepository accountRepository, PasswordEncoder passwordEncoder) {
         this.accountRepository = accountRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public URI registerUser(SignUpDto dto){
@@ -20,7 +23,7 @@ public class AccountService {
         var userModel = AccountModel.generalUser(
                 dto.userName()
                 , dto.email()
-                , dto.password()
+                , passwordEncoder.encode(dto.password())
         );
         return accountRepository.registerUser(userModel);
     }
